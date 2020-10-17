@@ -9,6 +9,15 @@ def fill_flats_with_new_buildings(apps, schema_editor):
         if flat.construction_year >= 2015:
             flat.new_building = True
             flat.save()
+        else:
+            flat.new_building = False
+            flat.save()
+
+def unfill_flats_with_new_buildings(apps, schema_editor):
+    flats = apps.get_model("property", "Flat")
+    for flat in flats.objects.all():        
+        flat.new_building = None
+        flat.save()        
 
 
 class Migration(migrations.Migration):
@@ -17,4 +26,4 @@ class Migration(migrations.Migration):
         ("property", "0003_flat_new_building"),
     ]
 
-    operations = [migrations.RunPython(fill_flats_with_new_buildings)]
+    operations = [migrations.RunPython(fill_flats_with_new_buildings, unfill_flats_with_new_buildings)]
