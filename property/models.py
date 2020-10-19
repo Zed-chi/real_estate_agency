@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class Flat(models.Model):
-    likes = models.ManyToManyField(User)
+    likes = models.ManyToManyField(User, verbose_name="Кто лайкнул", blank=True)
     new_building = models.NullBooleanField()
     owner = models.CharField("ФИО владельца", max_length=200)
     owners_phonenumber = models.CharField("Номер владельца", max_length=20)
