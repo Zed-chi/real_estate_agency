@@ -20,6 +20,7 @@ class FlatAdmin(admin.ModelAdmin):
         "has_balcony",
         "construction_year",
     ]
+    raw_id_fields = ("likes",)
 
 
 class ComplaintAdmin(admin.ModelAdmin):
@@ -29,4 +30,3 @@ class ComplaintAdmin(admin.ModelAdmin):
 
 admin.site.register(Flat, FlatAdmin)
 admin.site.register(Complaint, ComplaintAdmin)
-
