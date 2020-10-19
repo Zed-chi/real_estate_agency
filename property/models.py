@@ -5,7 +5,9 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Flat(models.Model):
-    owner_pure_phone = PhoneNumberField(region="RU", blank=True)
+    owner_pure_phone = PhoneNumberField(
+        region="RU", blank=True, verbose_name="Нормализованный номер владельца"
+    )
     likes = models.ManyToManyField(
         User, verbose_name="Кто лайкнул", blank=True
     )
