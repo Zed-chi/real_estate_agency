@@ -9,14 +9,10 @@ class FlatAdmin(admin.ModelAdmin):
     list_display = ("address", "price", "new_building", "created_at", "town")
     list_editable = ["new_building"]
     list_filter = [
-        "new_building",
-        "owners_phonenumber",
-        "created_at",
+        "new_building",        
         "price",
-        "town",
-        "floor",
-        "rooms_number",
-        "living_area",
+        "town",        
+        "rooms_number",        
         "has_balcony",
         "construction_year",
     ]
