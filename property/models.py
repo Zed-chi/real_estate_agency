@@ -12,7 +12,7 @@ class Flat(models.Model):
         User, verbose_name="Кто лайкнул", blank=True
     )
     new_building = models.NullBooleanField()
-    owner = models.CharField("ФИО владельца", max_length=200)
+    owner = models.ManyToManyField("Owner")
     owners_phonenumber = models.CharField("Номер владельца", max_length=20)
     created_at = models.DateTimeField(
         "Когда создано объявление", default=timezone.now, db_index=True
