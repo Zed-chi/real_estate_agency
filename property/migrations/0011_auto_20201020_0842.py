@@ -7,16 +7,12 @@ def fill_owner_model_from_flat(apps, schema):
     flat_model = apps.get_model("property", "Flat")
     owner_model = apps.get_model("property", "Owner")
     for flat in flat_model.objects.all():
-        owner_list = owner_model.objects.filter(name=flat.owner)
-        if owner_list:
-            owner = owner_list[0]
-        else:
-            owner = owner_model.objects.create(
+        owner = owner_model.objects.get_or_create(
                 name=flat.owner,
                 owners_phonenumber=flat.owners_phonenumber,
                 owner_pure_phone=flat.owner_pure_phone,
             )
-            owner.save()
+        owner.save()
         owner.flats.add(flat)
 
 
