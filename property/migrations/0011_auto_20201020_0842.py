@@ -8,10 +8,10 @@ def fill_owner_model_from_flat(apps, schema):
     owner_model = apps.get_model("property", "Owner")
     for flat in flat_model.objects.all():
         owner = owner_model.objects.get_or_create(
-                name=flat.owner,
-                owners_phonenumber=flat.owners_phonenumber,
-                owner_pure_phone=flat.owner_pure_phone,
-            )
+            name=flat.owner,
+            owners_phonenumber=flat.owners_phonenumber,
+            owner_pure_phone=flat.owner_pure_phone,
+        )
         owner.save()
         owner.flats.add(flat)
 

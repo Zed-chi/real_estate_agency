@@ -5,9 +5,9 @@ from django.db import migrations
 
 def fill_flats_with_new_buildings(apps, schema_editor):
     flats = apps.get_model("property", "Flat")
-    for flat in flats.objects.all():        
+    for flat in flats.objects.all():
         flat.new_building = flat.construction_year >= 2015
-        flat.save()        
+        flat.save()
 
 
 def unfill_flats_with_new_buildings(apps, schema_editor):
