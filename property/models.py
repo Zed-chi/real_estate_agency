@@ -11,7 +11,7 @@ class Flat(models.Model):
     likes = models.ManyToManyField(
         User, verbose_name="Кто лайкнул", blank=True
     )
-    new_building = models.NullBooleanField()
+    new_building = models.NullBooleanField(db_index=True)
     owner = models.ManyToManyField("Owner")
     owners_phonenumber = models.CharField("Номер владельца", max_length=20)
     created_at = models.DateTimeField(
